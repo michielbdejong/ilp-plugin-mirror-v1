@@ -36,7 +36,7 @@ class Plugin extends EventEmitter2 {
     return Promise.resolve()
   }
 
-  sendRequest (request) { return Promise.resolve(this.mirror._requestHandler && this.mirror._requestHandler(request)) }
+  sendRequest (request) { return Promise.resolve(this.mirror._requestHandler ? this.mirror._requestHandler(request) : null) }
   registerRequestHandler (handler) { this._requestHandler = handler }
   deregisterRequestHandler () { delete this._requestHandler }
 }
