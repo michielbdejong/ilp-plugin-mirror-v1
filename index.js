@@ -8,20 +8,18 @@ class Plugin extends EventEmitter2 {
     }
     this.mirror = mirror
     this.transfersSent = {}
-    this.info = {}
-    this.account = ''
-    this.onceConnected = new Promise(resolve => { this.resolveOnceConnected = resolve })
   }
 
-  connect () { this._connected = true; this.resolveOnceConnected(); this.emit('connect') }
+  connect () { this._connected = true; this.emit('connect') }
   disconnect () { this._connected = false; this.emit('disconnect') }
   isConnected () { return this._connected }
 
-  getInfo () { return this.info }
-  getAccount () { return this.account }
+  getInfo () { return {} }
+  getAccount () { return 'me' }
   getBalance () { return Promise.resolve('0') }
 
   sendTransfer (transfer) {
+//console.log('sendTransfer!', transfer)
     this.transfersSent[transfer.id] = transfer
     this.mirror.emit('incoming_prepare', transfer)
     return Promise.resolve(null)
