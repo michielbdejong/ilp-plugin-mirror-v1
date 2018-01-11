@@ -1,0 +1,22 @@
+{
+  "name": "ilp-plugin-mirror-v1",
+  "version": "1.0.0",
+  "description": "Version of ilp-plugin-mirror that works with LPI v1 instead of LPI v2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michielbdejong/ilp-plugin-mirror-v1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michielbdejong/ilp-plugin-mirror-v1/issues"
+  },
+  "homepage": "https://github.com/michielbdejong/ilp-plugin-mirror-v1#readme",
+  "dependencies": {
+    "eventemitter2": "^5.0.1"
+  }
+}
