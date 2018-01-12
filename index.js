@@ -11,8 +11,8 @@ class Plugin extends EventEmitter2 {
     this.opts = opts
   }
 
-  connect () { this._connected = true; this.emit('connect') }
-  disconnect () { this._connected = false; this.emit('disconnect') }
+  connect () { this._connected = true; this.emit('connect'); return Promise.resolve(null) }
+  disconnect () { this._connected = false; this.emit('disconnect'); return Promise.resolve(null) }
   isConnected () { return this._connected }
 
   getInfo () { return this.opts.info }
@@ -28,12 +28,12 @@ class Plugin extends EventEmitter2 {
 
   fulfillCondition (transferId, fulfillment) {
     this.mirror.emit('outgoing_fulfill', this.mirror.transfersSent[transferId], fulfillment)
-    return Promise.resolve()
+    return Promise.resolve(null)
   }
 
   rejectIncomingTransfer (transferId, reason) {
     this.mirror.emit('outgoing_reject', this.mirror.transfersSent[transferId], reason)
-    return Promise.resolve()
+    return Promise.resolve(null)
   }
 
   sendRequest (request) { return Promise.resolve(this.mirror._requestHandler ? this.mirror._requestHandler(request) : null) }
